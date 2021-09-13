@@ -1,6 +1,6 @@
 {
-    "viewportWidth": 1366,
-    "viewportHeight": 768,
+    "viewportWidth": 1980,
+    "viewportHeight": 1080,
     "defaultCommandTimeout": 10000,
-    "baseUrl": "https://cwi.com.br/"
+    "baseUrl": "http://aprendendotestar.com.br"
 }
