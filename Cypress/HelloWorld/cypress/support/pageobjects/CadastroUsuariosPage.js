@@ -2,8 +2,10 @@
 
 const url = Cypress.config("baseUrl")
 const inputUsuario = "input[name='form_usuario']"
+const inputNome = "input[name='form_nome']"
 const inputSenha = "input[name='form_senha']"
-const btnEnviarCadastro = "input[value='enviar']"
+const btnEnviarCadastro = "input[value='Enviar']"
+const tabelaUsuariosCadastrados = ""
 
 class CadastroUsuariosPage {
     // Acessa o site que será testado
@@ -11,12 +13,18 @@ class CadastroUsuariosPage {
         cy.visit(url+"/treinar-automacao.php")
     }
 
-    preencherUsuarioSenha(usuario, senha){
+    preencherUsuarioSenha(usuario,nome, senha){
         cy.get(inputUsuario).type(usuario)
+        cy.get(inputNome).type(nome)
         cy.get(inputSenha).type(senha)
     }
 
-    clicarEnviarCadastroUsuario(){
+    clicarBtnEnviarCadastroUsuario(){
+        cy.get(btnEnviarCadastro).click()
+    } 
+
+    validarUsuarioCadastradoListaUsuarios(usuario){
+        cy.get('table').eq(1).contains(usuario)
     }
  }
 
