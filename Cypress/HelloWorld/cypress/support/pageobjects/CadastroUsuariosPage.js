@@ -5,7 +5,7 @@ const inputUsuario = "input[name='form_usuario']"
 const inputNome = "input[name='form_nome']"
 const inputSenha = "input[name='form_senha']"
 const btnEnviarCadastro = "input[value='Enviar']"
-const tabelaUsuariosCadastrados = ""
+const indexTblListaUsuariosCadastrados = 1
 
 class CadastroUsuariosPage {
     // Acessa o site que será testado
@@ -24,7 +24,13 @@ class CadastroUsuariosPage {
     } 
 
     validarUsuarioCadastradoListaUsuarios(usuario){
-        cy.get('table').eq(1).contains(usuario)
+        cy.get("table").eq(indexTblListaUsuariosCadastrados).contains(usuario)
+    }
+
+    apagarUsuarioListaUsuarios(usuario){
+        cy.get("table").eq(indexTblListaUsuariosCadastrados).contains("tr", usuario).invoke("index").then((rowIndex) =>{
+            cy.get(":nth-child("+(rowIndex+1)+") > :nth-child(5) > a").dblclick()
+        })
     }
  }
 
